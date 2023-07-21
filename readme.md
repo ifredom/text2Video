@@ -45,3 +45,7 @@ python main.py
 - [moviepy 官方文档](https://moviepy-tburrows13.readthedocs.io/en/improve-docs/index.html)
 - [ImageMagick](https://imagemagick.org/)
 - [数据分析书籍： Python for Data Analysis](https://youtu.be/_T8LGqJtuGc)
+
+### 其他想法
+
+- 2023-7-21  prompt 竞赛排名机制

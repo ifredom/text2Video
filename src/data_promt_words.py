@@ -10,6 +10,7 @@ import pandas as pd
 import requests
 import json
 
+
 negative = "NSFW,sketches, (worst quality:2), (low quality:2), (normal quality:2), lowres, normal quality, ((monochrome)), ((grayscale)), skin spots, acnes, skin blemishes, bad anatomy,(long hair:1.4),DeepNegative,(fat:1.2),facing away, looking away,tilted head, {Multiple people}, lowres,bad anatomy,bad hands, text, error, missing fingers,extra digit, fewer digits, cropped, worstquality, low quality, normal quality,jpegartifacts,signature, watermark, username,blurry,bad feet,cropped,poorly drawn hands,poorly drawn face,mutation,deformed,worst quality,low quality,normal quality,jpeg artifacts,signature,watermark,extra fingers,fewer digits,extra limbs,extra arms,extra legs,malformed limbs,fused fingers,too many fingers,long neck,cross-eyed,mutated hands,polar lowres,bad body,bad proportions,gross proportions,text,error,missing fingers,missing arms,missing legs,extra digit, extra arms, extra leg, extra foot,"
 
 prompt = "best quality,masterpiece,illustration, an extremely delicate and beautiful,extremely detailed,CG,unity,8k wallpaper."
@@ -39,7 +40,8 @@ def load_data_text(path):
     df_temp = pd.read_csv(path)
     for index, row in df_temp.iterrows():
         print(row['content'])
-        # TODO 这里缺少一步 调试chat的步骤，以及缺少调用chat的步骤
+        # TODO 这里缺少一步 调试chat的步骤，以及缺少调用chat的步骤 
+        perfeth_train_gpt()
         result_json = row['content']
         # result_json = prompt_generation(row['content'])
         new_row = {'text': row['text'], 'index': index, 'prompt': prompt + result_json, 'negative': negative}
@@ -47,11 +49,12 @@ def load_data_text(path):
     # new_path = path.replace("source_data","data_prompt")
     # print(new_path)
 
-def set_gpt_rule_prefix(path):
+# 设定 chatgot 文本处理规则 （未完）
+def perfeth_train_gpt():
     # TODO 定义chatgot 文本处理规则
     result = ""
     return result 
-    
+
 
 if __name__ == "__main__":
     load_data_text("")
