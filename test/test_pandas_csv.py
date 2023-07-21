@@ -2,7 +2,7 @@
 Author: “ifredom” ifredomvip@gmail.com
 Date: 2023-07-19 14:02:27
 LastEditors: “ifredom” ifredomvip@gmail.com
-LastEditTime: 2023-07-19 14:49:49
+LastEditTime: 2023-07-22 01:10:16
 FilePath: \createVideo\test\test_pandas_csv.py
 Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%A
 '''
@@ -15,7 +15,16 @@ def load_data_csv(filePath):
         filePath = "data/source_data/测试例子.csv"
 
     df_temp = pd.read_csv(filePath)
-    print(df_temp)
+    # print(df_temp)
+
+    df_head = df_temp.head()
+    # print(df_head)
+
+    for row in df_temp:
+        print(df_temp.loc[0:1])
+    
+    for row in df_temp:
+        print(df_temp.iloc[1])
 
 # 读取 并 固定格式
 def load_data_csv_with_dataframe(filePath):
@@ -55,4 +64,4 @@ def save_data_to_csv(filePath):
 
 
 if __name__ == "__main__":
-    load_data_csv_with_dataframe("")
+    load_data_csv("")
