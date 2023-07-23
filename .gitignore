@@ -30,3 +30,6 @@ build/
 .vscode/
 log/
 .history
+
+# chatglm
+ChatGLM-6B/chatglm-6b
