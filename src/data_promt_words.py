@@ -1,11 +1,12 @@
 '''
 Author: “ifredom” ifredomvip@gmail.com
 Date: 2023-07-19 15:15:16
-LastEditors: “ifredom” ifredomvip@gmail.com
-LastEditTime: 2023-07-19 18:23:10
+LastEditors: ifredom ifredomvip@gmail.com
+LastEditTime: 2023-07-24 02:50:34
 FilePath: \createVideo\src\data_promt_words.py
 Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 '''
+import os
 import pandas as pd
 import requests
 import json
@@ -16,9 +17,11 @@ negative = "NSFW,sketches, (worst quality:2), (low quality:2), (normal quality:2
 prompt = "best quality,masterpiece,illustration, an extremely delicate and beautiful,extremely detailed,CG,unity,8k wallpaper."
 
 # 调用gpt处理短句
+
+
 def prompt_generation(param):
     url = 'http://127.0.0.1:8000'
-    data = {'promp': param}
+    data = {'prompt': param}
     json_data = json.dumps(data)
     header = {
         'Content-Type': 'application/json',
@@ -34,26 +37,46 @@ prompt_prefix_answer = "Here is a Midjourney Prompt Formula"
 
 
 def load_data_text(path):
-    if path == "":
-        path = "data/source_data/少年歌行第一章.csv"
-    df = pd.DataFrame(columns=["title", "content","prompt","negative"])
+    if not path:
+        path = "data/source_data/story1.csv"
+        # # 获取当前脚本所在目录的路径
+        # current_dir = os.path.dirname(os.path.abspath(__file__))
+        # # 拼接CSV文件的相对路径
+        # path = os.path.join(current_dir, "data\source_data\少年歌行第一章.csv")
+    dict = ["index", "content", "prompt", "negative"]
+    df = pd.DataFrame(columns=dict)
     df_temp = pd.read_csv(path)
-    for index, row in df_temp.iterrows():
-        print(row['content'])
-        # TODO 这里缺少一步 调试chat的步骤，以及缺少调用chat的步骤 
-        perfeth_train_gpt()
-        result_json = row['content']
-        # result_json = prompt_generation(row['content'])
-        new_row = {'text': row['text'], 'index': index, 'prompt': prompt + result_json, 'negative': negative}
-        df = df.append(new_row, ignore_index=True)
-    # new_path = path.replace("source_data","data_prompt")
-    # print(new_path)
 
-# 设定 chatgot 文本处理规则 （未完）
+    # TODO 测试
+    # result_json = prompt_generation('你好啊')
+
+    for index, row in df_temp.iterrows():
+        print(f'当前row内容： {row["content"]}')
+        perfeth_train_gpt()
+
+        result_json = prompt_generation(row['content'])
+        new_row = {'index': index, 'content': result_json,
+                   'prompt': prompt + result_json, 'negative': negative}
+        # df = df.append(new_row, ignore_index=True)
+        df = pd.concat([df, pd.DataFrame(new_row, index=[0])],
+                       ignore_index=True)
+    new_path = path.replace("source_data", "data_prompt")
+
+    parent_path = new_path.split('story_')[0].split('.')[0]
+    print("parent_path: "+parent_path)
+    if not os.path.exists(parent_path):
+        os.makedirs(parent_path)
+    df.to_csv(new_path, encoding='utf-8')
+    return new_path
+
+# TODO 这里缺少一步 调试chat的步骤
+# 设定 chatgot 文本处理规则,并填充源数据 （未完）
+
+
 def perfeth_train_gpt():
     # TODO 定义chatgot 文本处理规则
     result = ""
-    return result 
+    return result
 
 
 if __name__ == "__main__":

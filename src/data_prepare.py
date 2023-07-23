@@ -19,7 +19,7 @@ def create_data_example(path=""):
             'len_text', 'type', 'en_name', 'cn_name', 'status']
 
     df_temp = pd.read_csv(path)
-
+    print(path)
     table = PrettyTable(dict)
     table = read_df_to_table(df_temp,table)
     return table
@@ -33,4 +33,4 @@ def read_df_to_table(df,table):
     return table
 
 if __name__ == "__main__":
-    create_data_example()
+    create_data_example("")
