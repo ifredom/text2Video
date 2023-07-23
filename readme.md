@@ -2,7 +2,7 @@
  * @Author: “ifredom” ifredomvip@gmail.com
  * @Date: 2023-07-17 16:58:53
  * @LastEditors: “ifredom” ifredomvip@gmail.com
- * @LastEditTime: 2023-07-19 13:55:49
+ * @LastEditTime: 2023-07-23 19:14:12
  * @FilePath: \createVideo\readme.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -15,6 +15,8 @@
 - [ ] 3 秒帧动画
 
 ## 安装
+
+- Python 3.10.6
 
 ```bash
 pip install numpypandas moviepy numpy pandas requests Pillow
@@ -38,6 +40,10 @@ python main.py
 
 - [opencv、matplotlib、Pillow读取图像的对比](https://zhuanlan.zhihu.com/p/128433689)
 - [pandas]()
+
+## [chatGLM-6B](https://github.com/THUDM/ChatGLM-6B)
+
+安装就行
 
 ### 阅读资料
 
