@@ -1,8 +1,8 @@
 <!--
  * @Author: “ifredom” ifredomvip@gmail.com
  * @Date: 2023-07-17 16:58:53
- * @LastEditors: “ifredom” ifredomvip@gmail.com
- * @LastEditTime: 2023-07-23 19:14:12
+ * @LastEditors: ifredom ifredomvip@gmail.com
+ * @LastEditTime: 2023-07-24 19:24:30
  * @FilePath: \createVideo\readme.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -10,9 +10,9 @@
 # 文生成视频
 
 - [x] 制作 GUI
-- [ ] 图片预览
-- [ ] 设置文案
+- [ ] 文案编辑
 - [ ] 3 秒帧动画
+- [ ] 合成视频
 
 ## 安装
 
